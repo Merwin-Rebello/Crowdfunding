@@ -5,7 +5,7 @@ import {
   payment,
   profile,
   withdraw,
-} from "../assets";
+} from "../assests";
 
 export const navlinks = [
   {
