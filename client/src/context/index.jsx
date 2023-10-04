@@ -6,7 +6,7 @@ import {
   useMetamask,
   useContractWrite,
 } from "@thirdweb-dev/react";
-import { ethers } from "ethers";
+// import { ethers } from "ethers";
 const StateContext = createContext();
 
 export const StateContextProvider = ({ children }) => {
@@ -23,15 +23,22 @@ export const StateContextProvider = ({ children }) => {
 
   const publishCampaign = async (form) => {
     try {
-      const data = await createCampaign([
-        address, // owner
-        form.title, // title
-        form.description, // description
+      // const data = await createCampaign([
+      //   address, // owner
+      //   form.title, // title
+      //   form.description, // description
+      //   form.target,
+      //   new Date(form.deadline).getTime(), // deadline,
+      //   form.image,
+      // ]);
+      const data = await contract.call("createCampaign", [
+        address,
+        form.title,
+        form.description,
         form.target,
-        new Date(form.deadline).getTime(), // deadline,
+        new Date(form.deadline).getTime(),
         form.image,
       ]);
-
       console.log("contract call success", data);
     } catch (error) {
       console.log("contract call failure", error);
